@@ -8,13 +8,21 @@ namespace H1_Lommeregner.Funktioner;
 
 internal class Funktioner
 {
-    public float plus(float num1, float num2)
-        => num1 + num2;
-    public float minus(float num1, float num2)
-        => num1 - num2;
-    public float gange(float num1, float num2)
-        => num1 * num2;
-    public float divider(float num1, float num2)
-        => num1 / num2;
+    public string Calculate(int num1, int num2, char operationMethod)
+    {
+        switch (operationMethod)
+        {
+            case '*':
+                return (num1 * num2).ToString();
+            case '/':
+                return (num1 / num2).ToString();
+            case '+':
+                return (num1 + num2).ToString();
+            case '-':
+                return (num1 - num2).ToString();
+        }
+        return null;
+    }
+
 
 }
