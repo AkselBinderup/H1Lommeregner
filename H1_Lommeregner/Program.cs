@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using H1_Lommeregner.Funktioner;
+
+Funktioner lommeregner = new Funktioner();
+
+Console.WriteLine(lommeregner.plus(0.1f, 0.2f));
