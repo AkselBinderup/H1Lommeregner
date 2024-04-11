@@ -14,23 +14,20 @@ internal class ChooseHierarchy
     {
         Funktioner calculate = new Funktioner();
 
-        char[] operators = { '*', '+', '-', '/' };
+        char[] operators = { '*', '/' };
 
         while (true)
         {
-
-            string remaining = "";
-
             int operatorIndex = func.IndexOfAny(operators);
             if (!int.TryParse(func, out var InvalidOperator))
             {
                 if (operatorIndex != -1)
                 {
-                    int occurenceOne = func.LastIndexOfAny(operators, operatorIndex - 1);
+                    int occurenceOne = func.LastIndexOfAny(new char[] { '*', '/', '+', '-' }, operatorIndex - 1);
                     if (occurenceOne == null)
                         occurenceOne = 0;
 
-                    int occurenceTwo = func.IndexOfAny(operators, operatorIndex + 1);
+                    int occurenceTwo = func.IndexOfAny(new char[] { '*', '/', '+', '-'}, operatorIndex + 1);
 
                     int firstIndex = occurenceOne + 1;
                     string num1 = func.Substring(firstIndex, operatorIndex - firstIndex);
@@ -39,16 +36,18 @@ internal class ChooseHierarchy
                     int endIndex = occurenceTwo == -1 ? func.Length : occurenceTwo;
                     string num2 = func.Substring(secondIndex, endIndex - secondIndex);
 
-                    if (endIndex < func.Length)
-                    {
-                        remaining = func.Substring(endIndex);
-                    }
-
                     char splitOperator = func[operatorIndex];
-                    var num = calculate.Calculate(int.Parse(num1), int.Parse(num2), splitOperator);
-
                     var calculation = num1 + splitOperator.ToString() + num2;
-                    func = func.Replace(calculation, num.ToString());
+                    string num;
+                    num = calculate.Calculate(int.Parse(num1), int.Parse(num2), splitOperator);
+                    if (!operators.Contains(splitOperator))
+                        num = calculation;
+                    func = func.Replace(calculation, num);
+                }
+                else
+                {
+                    operators[0] = ('+');
+                    operators[1] = ('-');
                 }
             }
             else

@@ -8,20 +8,20 @@ namespace H1_Lommeregner.Funktioner;
 
 internal class Funktioner
 {
-    public int Calculate(int num1, int num2, char operationMethod)
+    public string Calculate(int num1, int num2, char operationMethod)
     {
         switch (operationMethod)
         {
             case '*':
-                return num1 * num2;
+                return (num1 * num2).ToString();
             case '/':
-                return num1 / num2;
+                return (num1 / num2).ToString();
             case '+':
-                return num1 + num2;
+                return (num1 + num2).ToString();
             case '-':
-                return num1 - num2;
+                return (num1 - num2).ToString();
         }
-        return 0;
+        return null;
     }
 
 
