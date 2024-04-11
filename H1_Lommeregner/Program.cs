@@ -9,7 +9,6 @@ class Program
 		// 112+84 = 196
 
 		WriteInColor(ConsoleColor.DarkGray, "write your calculation");
-		Console.Write("Write your calculation: ");
 		string calculation = Console.ReadLine();
 
 		ChooseHierarchy hierachy = new ChooseHierarchy();
