@@ -16,4 +16,5 @@ internal class Funktioner
         => num1 * num2;
     public float divider(float num1, float num2)
         => num1 / num2;
+
 }
