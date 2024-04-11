@@ -11,22 +11,38 @@ internal class ChooseHierarchy
     internal string getFunctions(string func)
     {
         Funktioner calculate = new Funktioner();
+        int firstIndex = 0;
+        int secondIndex = 0;
+        string remaining = "";
 
-        int indexNum1 = func.IndexOf('*');
-        indexNum1 = func.IndexOf('*', indexNum1 - 1);
-        string result = func.Substring(0, indexNum1);
+        char[] operators = { '*', '+', '-', '/' };
 
-        int indexNum2 = func.IndexOf('*');
-        
-        indexNum2 = func.IndexOf('+', indexNum2 + 1);
-        string num2 = func.Substring(0, indexNum2);
-        
+        int operatorIndex = func.IndexOfAny(operators);
 
+        if ( operatorIndex != -1)
+        {
+            int occurenceOne = func.LastIndexOfAny(operators, operatorIndex - 1);
+            if (occurenceOne == null)
+                occurenceOne = 0;
 
-        Console.WriteLine(  result + " " + num2);
+            int occurenceTwo = func.IndexOfAny(operators, operatorIndex + 1);
 
+            firstIndex = occurenceOne + 1;
+            string num1 = func.Substring(firstIndex, operatorIndex - firstIndex);
 
-        return result;
+            secondIndex = operatorIndex + 1;
+            int endIndex = occurenceTwo == -1 ? func.Length : occurenceTwo;
+            string num2 = func.Substring(secondIndex, endIndex - secondIndex);
+
+            if(endIndex < func.Length)
+            {
+                remaining = func.Substring(endIndex);
+            }
+
+            Console.WriteLine($"num 1: {num1} Num 2: {num2} End: {remaining}");
+        }
+
+        return "";
 
 
     }
