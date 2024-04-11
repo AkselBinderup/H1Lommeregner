@@ -2,11 +2,12 @@
 
 class Program
 {
-	public void Main(string[] args)
+	public static void Main(string[] args)
 	{
 		Funktioner lommeregner = new Funktioner();
 		
 		// 112+84 = 196
+
 		WriteInColor(ConsoleColor.DarkGray, "write your calculation");
 		Console.Write("Write your calculation: ");
 		string calculation = Console.ReadLine();
@@ -18,7 +19,7 @@ class Program
 		WriteInColor(ConsoleColor.Green, $"the result is {result}");
 	}
 
-	void WriteInColor(ConsoleColor color, string text)
+	static void WriteInColor(ConsoleColor color, string text)
 	{
 		Console.ForegroundColor = color;
 		Console.WriteLine(text);
