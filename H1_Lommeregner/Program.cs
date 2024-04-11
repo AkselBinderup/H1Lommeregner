@@ -1,4 +1,5 @@
 ﻿using H1_Lommeregner.Funktioner;
+using System.Text;
 
 class Program
 {
@@ -6,10 +7,20 @@ class Program
 	{
 		Funktioner lommeregner = new Funktioner();
 		
-		// 112+84 = 196
+		WriteInColor(ConsoleColor.White, "write your calculation: ");
+		
+		var calculationSymbols = Console.ReadLine().ToCharArray();
+		
+		string calculation = "";
+		char[] operators = { '*', '+', '-', '/' };
 
-		WriteInColor(ConsoleColor.DarkGray, "write your calculation");
-		string calculation = Console.ReadLine();
+		for (int i = 0; i < calculationSymbols.Length; i++)
+		{
+			if (operators.Contains(calculationSymbols[i]) || int.TryParse(calculationSymbols[i].ToString(), out int _))
+			{
+				calculation += calculationSymbols[i].ToString();
+			}
+		}
 
 		ChooseHierarchy hierachy = new ChooseHierarchy();
 
@@ -18,10 +29,10 @@ class Program
 		WriteInColor(ConsoleColor.Green, $"the result is {result}");
 	}
 
-	static void WriteInColor(ConsoleColor color, string text)
+	static void WriteInColor(ConsoleColor foregroundColor, string text)
 	{
-		Console.ForegroundColor = color;
-		Console.WriteLine(text);
+		Console.ForegroundColor = foregroundColor;
+		Console.Write(text);
 		Console.ResetColor();
 	}
 
