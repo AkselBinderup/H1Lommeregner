@@ -1,15 +1,29 @@
 ﻿using H1_Lommeregner.Funktioner;
 
-Funktioner lommeregner = new Funktioner();
+class Program
+{
+	public void Main(string[] args)
+	{
+		Funktioner lommeregner = new Funktioner();
+		
+		// 112+84 = 196
+		WriteInColor(ConsoleColor.DarkGray, "write your calculation");
+		Console.Write("Write your calculation: ");
+		string calculation = Console.ReadLine();
 
-// 112+84 = 196
-var num1 = 2;
-var num2 = 3;
+		ChooseHierarchy hierachy = new ChooseHierarchy();
 
-ChooseHierarchy ifeiiefi = new ChooseHierarchy();
+		var result = hierachy.getFunctions(calculation);
 
-var result = ifeiiefi.getFunctions("58*2+421*2-4");
+		WriteInColor(ConsoleColor.Green, $"the result is {result}");
+	}
 
-Console.WriteLine(result);
+	void WriteInColor(ConsoleColor color, string text)
+	{
+		Console.ForegroundColor = color;
+		Console.WriteLine(text);
+		Console.ResetColor();
+	}
 
-Console.WriteLine(lommeregner.plus(num1, num2)); ;
+}
+
