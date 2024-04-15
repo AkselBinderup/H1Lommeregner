@@ -7,16 +7,16 @@ class Program
 	{
 		Funktioner lommeregner = new Funktioner();
 		
-		WriteInColor(ConsoleColor.White, "write your calculation: ");
+		WriteInColor(ConsoleColor.White, "Write your calculation: ");
 		
 		var calculationSymbols = Console.ReadLine().ToCharArray();
 		
 		string calculation = "";
-		char[] operators = { '*', '+', '-', '/' };
+		char[] specialChars = { '*', '+', '-', '/', '.' };
 
 		for (int i = 0; i < calculationSymbols.Length; i++)
 		{
-			if (operators.Contains(calculationSymbols[i]) || int.TryParse(calculationSymbols[i].ToString(), out int _))
+			if (specialChars.Contains(calculationSymbols[i]) || int.TryParse(calculationSymbols[i].ToString(), out int _))
 			{
 				calculation += calculationSymbols[i].ToString();
 			}
@@ -26,7 +26,7 @@ class Program
 
 		var result = hierachy.getFunctions(calculation);
 
-		WriteInColor(ConsoleColor.Green, $"the result is {result}");
+		WriteInColor(ConsoleColor.Green, $"The result is {result}");
 	}
 
 	static void WriteInColor(ConsoleColor foregroundColor, string text)
